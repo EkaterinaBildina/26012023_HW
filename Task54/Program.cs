@@ -43,42 +43,28 @@ void PrintMatrix(int[,] matrix)
 
 int[,] RowsSortArray(int[,] matrix1)
 {
-    int[,] rowSort = new int[matrix1.GetLength(0),matrix1.GetLength(1)];
-
+    int tempMax;
 
     for (int i = 0; i < matrix1.GetLength(0); i++)
     {
-        for (int j = 0; j < matrix1.GetLength(1)-1; j++)
+        for (int j = 0; j < matrix1.GetLength(1) - 1; j++)
         {
-            if (matrix1[i, j] > matrix1[i, j + 1])
+            for (int k = 0; k < matrix1.GetLength(1) - 1 - j; k++)
             {
-                int tempMax;
-                tempMax = matrix1[i, j];
-                matrix1[i, j] = matrix1[i, j + 1];
-                matrix1[i, j + 1] = tempMax;
+                if (matrix1[i, k] < matrix1[i, k + 1])
+                {
+                    tempMax = matrix1[i, k];
+                    matrix1[i, k] = matrix1[i, k + 1];
+                    matrix1[i, k + 1] = tempMax;
+                }
             }
         }
     }
-    return rowSort;
+    return matrix1;
 }
 
 
-
-
-
-
-void PrintArray(int[] arr)
-{
-    Console.Write("[");
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (i < arr.Length - 1) Console.Write(arr[i] + ",");
-        else Console.Write(arr[i]);
-    }
-    Console.Write("]");
-}
-
-int[,] matrix = CreateMatrixRndInt(4, 4, 0, 10);
+int[,] matrix = CreateMatrixRndInt(4, 6, -10, 10);
 PrintMatrix(matrix);
 
 Console.WriteLine("Sring.Empty");
