@@ -63,11 +63,11 @@ void FindMinSum(int[,] array)
     for (int i = 0; i < array.GetLength(0); i++)
     {
         if (array[minRowIndex, 0] >= array[i, 0]) minRowIndex = i;
-            }
-    Console.WriteLine($"Row's number with min sum of elements is {minRowIndex+1}");
+    }
+    Console.WriteLine($"Row's number with min sum of elements is {minRowIndex + 1}");
 }
 
-int[,] matrix = CreateMatrixRndInt(4, 4, 0, 10);
+int[,] matrix = CreateMatrixRndInt(5, 5, -10, 10);
 PrintMatrix(matrix);
 Console.WriteLine("Row's Sum:");
 
