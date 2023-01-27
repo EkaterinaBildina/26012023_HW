@@ -41,14 +41,19 @@ void PrintMatrix(int[,] matrix)
 int[,] MultiplyTwoMatrix(int[,] matrixA, int[,] matrixB)
 {
     int[,] multiMatrix = new int[matrixA.GetLength(0), matrixB.GetLength(1)];
-  
+
+
     if (matrixA.GetLength(1) == matrixB.GetLength(0))
     {
         for (int i = 0; i < multiMatrix.GetLength(0); i++)
         {
             for (int j = 0; j < multiMatrix.GetLength(1); j++)
             {
-                multiMatrix[i, j] = matrixA[i, j] * matrixB[i, j] + matrixA[i, j+1] * matrixB[i+1, j];
+              
+                for (int n = 0; n < multiMatrix.GetLength(1); n++)
+                {
+                    multiMatrix[i, j] += matrixA[i, n] * matrixB[n, j];
+                }
             }
         }
     }
@@ -59,7 +64,7 @@ int[,] MultiplyTwoMatrix(int[,] matrixA, int[,] matrixB)
 int[,] matrix1 = CreateMatrixRndInt(2, 2, 1, 5);
 PrintMatrix(matrix1);
 Console.WriteLine();
-int[,] matrix2 = CreateMatrixRndInt(2, 1, 1, 5);
+int[,] matrix2 = CreateMatrixRndInt(2, 2, 1, 5);
 PrintMatrix(matrix2);
 
 Console.WriteLine();
