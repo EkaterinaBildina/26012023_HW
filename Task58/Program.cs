@@ -43,14 +43,14 @@ int[,] MultiplyTwoMatrix(int[,] matrixA, int[,] matrixB)
     int[,] multiMatrix = new int[matrixA.GetLength(0), matrixB.GetLength(1)];
 
 
-    if (matrixA.GetLength(1) == matrixB.GetLength(0))
+    if (matrixA.GetLength(1) == matrixB.GetLength(0)) // Операция умножения двух матриц выполнима только в том случае, если число столбцов в первом сомножителе равно числу строк во втором; в этом случае говорят, что форма матрицсогласована.
     {
-        for (int i = 0; i < multiMatrix.GetLength(0); i++)
+        for (int i = 0; i < matrixA.GetLength(0); i++)
         {
-            for (int j = 0; j < multiMatrix.GetLength(1); j++)
+            for (int j = 0; j < matrixB.GetLength(1); j++)
             {
-              
-                for (int n = 0; n < multiMatrix.GetLength(1); n++)
+
+                for (int n = 0; n < matrixA.GetLength(1); n++)
                 {
                     multiMatrix[i, j] += matrixA[i, n] * matrixB[n, j];
                 }
@@ -61,10 +61,10 @@ int[,] MultiplyTwoMatrix(int[,] matrixA, int[,] matrixB)
     return multiMatrix;
 }
 
-int[,] matrix1 = CreateMatrixRndInt(2, 2, 1, 5);
+int[,] matrix1 = CreateMatrixRndInt(3, 4, 1, 5);
 PrintMatrix(matrix1);
 Console.WriteLine();
-int[,] matrix2 = CreateMatrixRndInt(2, 2, 1, 5);
+int[,] matrix2 = CreateMatrixRndInt(4, 2, 1, 5);
 PrintMatrix(matrix2);
 
 Console.WriteLine();
