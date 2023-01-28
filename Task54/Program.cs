@@ -64,7 +64,7 @@ int[,] RowsSortArray(int[,] matrix1)
 }
 
 
-int[,] matrix = CreateMatrixRndInt(4, 6, -10, 10);
+int[,] matrix = CreateMatrixRndInt(4, 5, -10, 10);
 PrintMatrix(matrix);
 
 Console.WriteLine("Sring.Empty");
