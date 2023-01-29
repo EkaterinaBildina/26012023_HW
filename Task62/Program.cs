@@ -43,43 +43,47 @@ void PrintMatrix(int[,] matrix)
 
 int[,] SpringNumberMatrix(int[,] matrixSp)
 {
-    int rowLastIndex = matrixSp.GetUpperBound(0); 
-    int columnLastIndex = matrixSp.GetUpperBound(1);
+    int rowN = matrixSp.GetLength(0)-1;
+    int columnN = matrixSp.GetLength(1)-1;
 
-    int maxIndxRow = rowLastIndex + 1;
-    int maxIndxColumn = columnLastIndex;
-    
+    int stopRow = rowN + 1;
+    int stopColumn = columnN;
+
     int startIndexRow = 1;
     int startIndexColumn = 1;
 
     int i = -1;
     int j = 0;
-    int count = 1;
+    int stepPlus = 1;
 
-    while ((maxIndxRow >= 0) && (maxIndxColumn >= 0))
+    while ((stopRow >= 0) && (stopColumn >= 0))
     {
-        for (int rowCount = 1; rowCount <= maxIndxRow; rowCount++)
+
+        for (int rowStep = 1; rowStep <= stopRow; rowStep++)
         {
-            matrixSp[i + startIndexRow * rowCount, j] = count;
-            count++;
+            matrixSp[i + startIndexRow * rowStep, j] = stepPlus;
+            stepPlus++;
         }
 
-        i = i + startIndexRow * maxIndxRow;
+        i = i + startIndexRow * stopRow;
         startIndexRow = -startIndexRow;
-        maxIndxRow--;
+        stopRow--;
 
-        for (int columnCount = 1; columnCount <= maxIndxColumn; columnCount++)
+
+        for (int columnStep = 1; columnStep <= stopColumn; columnStep++)
         {
-            matrixSp[i, j + startIndexColumn * columnCount] = count;
-            count++;
+            matrixSp[i, j + startIndexColumn * columnStep] = stepPlus;
+            stepPlus++;
         }
 
-        j = j + startIndexColumn * maxIndxColumn;
+
+        j = j + startIndexColumn * stopColumn;
         startIndexColumn = -startIndexColumn;
-        maxIndxColumn--;
+        stopColumn--;
     }
     return matrixSp;
 }
+
 
 
 int[,] matrix = CreateMatrixRndInt(4, 4, 0, 25);
